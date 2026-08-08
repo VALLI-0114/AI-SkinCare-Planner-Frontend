@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Calendar, User, FileText } from 'lucide-react';
+import { API_BASE_URL } from '../../config';
 
 const profileSchema = z.object({
     full_name: z.string().min(2, 'Required'),
@@ -117,7 +118,7 @@ const ProfessionalOnboarding: React.FC<Props> = ({ role, onComplete }) => {
             formData.append('medical_license', medicalLicenseFile);
             formData.append('degree_certificate', degreeCertificateFile);
 
-            const res = await fetch('http://localhost:8000/api/v1/professionals/profile', {
+            const res = await fetch(`${API_BASE_URL}/api/v1/professionals/profile`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`

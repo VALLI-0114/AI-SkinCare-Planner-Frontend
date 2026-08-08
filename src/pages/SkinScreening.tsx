@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Camera, Upload, AlertCircle, CheckCircle, Search, X } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function SkinScreening() {
   const navigate = useNavigate();
@@ -96,7 +97,7 @@ export default function SkinScreening() {
     try {
       const token = localStorage.getItem('access_token');
       // 1. Call AI Vision API
-      const analyzeRes = await fetch('http://localhost:8000/api/v1/screening/analyze', {
+      const analyzeRes = await fetch(`${API_BASE_URL}/api/v1/screening/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ export default function SkinScreening() {
 
       // 2. Save the screening to database
       if (aiResults.detected_concerns && aiResults.detected_concerns.length > 0) {
-        await fetch('http://localhost:8000/api/v1/screening/', {
+        await fetch(`${API_BASE_URL}/api/v1/screening/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { Home, Sparkles, Activity, List, ShoppingBag, Settings, LogOut, MessageCircle, Heart, Share2, Users, User } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../config';
 
 export default function DashboardLayout() {
   const navigate = useNavigate()
@@ -13,7 +14,7 @@ export default function DashboardLayout() {
       try {
         const token = localStorage.getItem('access_token')
         if (!token) return
-        const res = await fetch('http://localhost:8000/api/v1/auth/me', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/auth/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
         if (res.ok) {

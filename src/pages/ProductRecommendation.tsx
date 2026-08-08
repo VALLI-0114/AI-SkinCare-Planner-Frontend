@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Filter, Star, DollarSign, ArrowRight, SlidersHorizontal, Scale, CheckCircle2 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function ProductRecommendation() {
   const [filter, setFilter] = useState('All');
@@ -17,7 +18,7 @@ export default function ProductRecommendation() {
       setLoading(true);
       try {
         const token = localStorage.getItem('access_token');
-        const res = await fetch(`http://localhost:8000/api/v1/products/recommendations`, {
+        const res = await fetch(`${API_BASE_URL}/api/v1/products/recommendations`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

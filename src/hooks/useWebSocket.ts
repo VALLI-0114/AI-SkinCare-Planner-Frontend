@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { API_BASE_URL } from '../config';
 
 export function useWebSocket(userId: string | undefined, onMessage: (msg: any) => void) {
   const ws = useRef<WebSocket | null>(null);
@@ -11,10 +12,9 @@ export function useWebSocket(userId: string | undefined, onMessage: (msg: any) =
   useEffect(() => {
     if (!userId) return;
 
-    // Use ws:// for local development, wss:// in production
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    // Assume backend is on port 8000
-    const url = `${protocol}//localhost:8000/api/v1/ws/${userId}`;
+    // Derive WebSocket URL from API_BASE_URL
+    const wsUrl = API_BASE_URL.replace(/^http/, 'ws');
+    const url = `${wsUrl}/api/v1/ws/${userId}`;
     
     ws.current = new WebSocket(url);
 

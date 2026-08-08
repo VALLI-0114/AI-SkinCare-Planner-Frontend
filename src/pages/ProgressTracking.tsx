@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, Camera, Activity, Calendar, Trash2 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { API_BASE_URL } from '../config';
 
 export default function ProgressTracking() {
   const [history, setHistory] = useState<any[]>([]);
@@ -12,10 +13,10 @@ export default function ProgressTracking() {
       try {
         const token = localStorage.getItem('access_token');
         const [scoreRes, screeningRes] = await Promise.all([
-          fetch('http://localhost:8000/api/v1/scoring/history', {
+          fetch(`${API_BASE_URL}/api/v1/scoring/history`, {
             headers: { 'Authorization': `Bearer ${token}` }
           }),
-          fetch('http://localhost:8000/api/v1/screening/history', {
+          fetch(`${API_BASE_URL}/api/v1/screening/history`, {
             headers: { 'Authorization': `Bearer ${token}` }
           })
         ]);
@@ -50,7 +51,7 @@ export default function ProgressTracking() {
     if (!window.confirm("Are you sure you want to remove this photo?")) return;
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://localhost:8000/api/v1/screening/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/v1/screening/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

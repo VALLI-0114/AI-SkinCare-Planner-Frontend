@@ -15,6 +15,7 @@ import {
   Activity
 } from 'lucide-react';
 import { userProfileService } from '../services/userProfileService';
+import { API_BASE_URL } from '../config';
 
 export default function UserProfile() {
   const [profile, setProfile] = useState<any>(null);
@@ -61,7 +62,7 @@ export default function UserProfile() {
       }
       
       const token = localStorage.getItem('access_token');
-      const onboardRes = await fetch('http://localhost:8000/api/v1/onboarding/', {
+      const onboardRes = await fetch(`${API_BASE_URL}/api/v1/onboarding/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       let onboardData = { skin_profile: {}, lifestyle_profile: {} } as any;
@@ -161,7 +162,7 @@ export default function UserProfile() {
           water_intake: formData.water_intake
         }
       };
-      await fetch('http://localhost:8000/api/v1/onboarding/', {
+      await fetch(`${API_BASE_URL}/api/v1/onboarding/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

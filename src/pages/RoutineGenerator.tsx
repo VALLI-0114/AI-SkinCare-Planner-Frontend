@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Calendar, RefreshCw, Info } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function RoutineGenerator() {
   const [activeTab, setActiveTab] = useState<'morning' | 'evening' | 'weekly'>('morning');
@@ -10,7 +11,7 @@ export default function RoutineGenerator() {
     setLoading(true);
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch('http://localhost:8000/api/v1/routines/recommendations', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/routines/recommendations`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {

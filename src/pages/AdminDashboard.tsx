@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Users, Activity, Settings, Database, AlertCircle, BarChart3, Clock, FileText, ShoppingBag } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -13,7 +14,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/v1/admin/stats', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/admin/stats`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('access_token')}` }
         });
         if (res.ok) {

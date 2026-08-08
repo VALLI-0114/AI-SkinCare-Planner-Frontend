@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, AlertTriangle, CheckCircle, ShieldAlert, Sparkles } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function IngredientIntelligence() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,7 +11,7 @@ export default function IngredientIntelligence() {
     const fetchIntelligence = async () => {
       try {
         const token = localStorage.getItem('access_token');
-        const res = await fetch('http://localhost:8000/api/v1/ingredients/intelligence', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/ingredients/intelligence`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

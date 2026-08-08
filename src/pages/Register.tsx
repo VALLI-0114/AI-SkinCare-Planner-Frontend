@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { User, Mail, KeyRound } from 'lucide-react'
+import { API_BASE_URL } from '../config';
 
 export default function Register() {
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ export default function Register() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:8000/api/v1/auth/register', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { User, KeyRound, CheckCircle, Leaf, Sparkles, Sun } from 'lucide-react';
 import { useWebSocket } from '../hooks/useWebSocket';
+import { API_BASE_URL } from '../config';
 
 export default function Dashboard() {
   const [profile, setProfile] = useState<any>(null);
@@ -18,7 +19,7 @@ export default function Dashboard() {
   const fetchScore = useCallback(async () => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch('http://localhost:8000/api/v1/scoring/', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/scoring/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -36,7 +37,7 @@ export default function Dashboard() {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('access_token');
-        const res = await fetch('http://localhost:8000/api/v1/auth/me', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/auth/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

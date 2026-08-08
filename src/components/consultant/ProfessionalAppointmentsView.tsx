@@ -16,6 +16,7 @@ import {
   FileText
 } from 'lucide-react';
 import { format } from 'date-fns';
+import { API_BASE_URL } from '../../config';
 
 export default function ProfessionalAppointmentsView() {
   const [appointments, setAppointments] = useState<any[]>([]);
@@ -34,7 +35,7 @@ export default function ProfessionalAppointmentsView() {
     try {
       setLoading(true);
       const token = localStorage.getItem('access_token');
-      const res = await fetch('http://localhost:8000/api/v1/appointments/', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/appointments/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -61,7 +62,7 @@ export default function ProfessionalAppointmentsView() {
       try {
         setLoadingDetailsId(apptId);
         const token = localStorage.getItem('access_token');
-        const res = await fetch(`http://localhost:8000/api/v1/appointments/${apptId}/patient-details`, {
+        const res = await fetch(`${API_BASE_URL}/api/v1/appointments/${apptId}/patient-details`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {
@@ -79,7 +80,7 @@ export default function ProfessionalAppointmentsView() {
   const handleStatusChange = async (id: string, status: string) => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://localhost:8000/api/v1/appointments/${id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/v1/appointments/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

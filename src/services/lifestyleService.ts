@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+import { API_BASE_URL } from '../config';
+
+const API_V1_URL = `${API_BASE_URL}/api/v1`;
 
 function getAuthHeaders() {
     const token = localStorage.getItem('access_token');
@@ -10,7 +12,7 @@ function getAuthHeaders() {
 
 export const lifestyleService = {
     async getHistory() {
-        const response = await fetch(`${API_BASE_URL}/lifestyle/history`, {
+        const response = await fetch(`${API_V1_URL}/lifestyle/history`, {
             headers: getAuthHeaders(),
         });
         if (!response.ok) throw new Error('Failed to fetch lifestyle history');
@@ -18,7 +20,7 @@ export const lifestyleService = {
     },
 
     async getLatest() {
-        const response = await fetch(`${API_BASE_URL}/lifestyle/latest`, {
+        const response = await fetch(`${API_V1_URL}/lifestyle/latest`, {
             headers: getAuthHeaders(),
         });
         if (!response.ok) {
@@ -29,7 +31,7 @@ export const lifestyleService = {
     },
 
     async createLog(data: any) {
-        const response = await fetch(`${API_BASE_URL}/lifestyle/`, {
+        const response = await fetch(`${API_V1_URL}/lifestyle/`, {
             method: 'POST',
             headers: getAuthHeaders(),
             body: JSON.stringify(data),

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ProfessionalOnboarding from '../components/ProfessionalOnboarding/ProfessionalOnboarding';
 import ProfessionalAppointmentsView from '../components/consultant/ProfessionalAppointmentsView';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { API_BASE_URL } from '../config';
 
 interface PatientQueue {
   id: string;
@@ -44,7 +45,7 @@ export default function ConsultantDashboard() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/v1/auth/me', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/auth/me`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
@@ -71,7 +72,7 @@ export default function ConsultantDashboard() {
   useEffect(() => {
     const fetchQueue = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/v1/clinical-workflow/queue/consultant', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/clinical-workflow/queue/consultant`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
@@ -106,7 +107,7 @@ export default function ConsultantDashboard() {
       const fetchDetails = async () => {
         setLoadingDetails(true);
         try {
-          const res = await fetch(`http://localhost:8000/api/v1/clinical-workflow/patient-details/${selectedPatient.id}`, {
+          const res = await fetch(`${API_BASE_URL}/api/v1/clinical-workflow/patient-details/${selectedPatient.id}`, {
               method: 'GET',
               headers: {
                   'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
@@ -132,7 +133,7 @@ export default function ConsultantDashboard() {
     if (targetPatient) {
       const fetchRecordDetails = async () => {
         try {
-          const res = await fetch(`http://localhost:8000/api/v1/clinical-workflow/patient-details/${targetPatient.id}`, {
+          const res = await fetch(`${API_BASE_URL}/api/v1/clinical-workflow/patient-details/${targetPatient.id}`, {
               method: 'GET',
               headers: {
                   'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
@@ -161,7 +162,7 @@ export default function ConsultantDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/v1/clinical-workflow/stats/consultant', {
+        const res = await fetch(`${API_BASE_URL}/api/v1/clinical-workflow/stats/consultant`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
           }

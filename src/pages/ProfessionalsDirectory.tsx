@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Calendar, MapPin, Video, CheckCircle, Clock } from 'lucide-react';
 import { format } from 'date-fns';
+import { API_BASE_URL } from '../config';
 
 export default function ProfessionalsDirectory() {
   const [professionals, setProfessionals] = useState<any[]>([]);
@@ -21,7 +22,7 @@ export default function ProfessionalsDirectory() {
     try {
       setLoading(true);
       const token = localStorage.getItem('access_token');
-      const res = await fetch('http://localhost:8000/api/v1/professionals/', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/professionals/`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -49,7 +50,7 @@ export default function ProfessionalsDirectory() {
         notes: notes
       };
       
-      const res = await fetch('http://localhost:8000/api/v1/appointments/', {
+      const res = await fetch(`${API_BASE_URL}/api/v1/appointments/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
