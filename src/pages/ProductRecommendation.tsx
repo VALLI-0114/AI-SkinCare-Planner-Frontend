@@ -166,17 +166,15 @@ export default function ProductRecommendation() {
                     {product.match}% Match
                   </div>
                   
-                  {product.image ? (
-                    <img 
-                      src={product.image} 
-                      alt={product.name} 
-                      className="h-36 object-contain mix-blend-multiply drop-shadow-md group-hover:scale-105 transition duration-500" 
-                    />
-                  ) : (
-                    <div className="w-20 h-32 bg-white border border-[#e5dfd1] shadow-sm rounded-lg flex items-center justify-center text-[#d6c7b0]">
-                      <ShoppingBag className="w-8 h-8 opacity-50" />
-                    </div>
-                  )}
+                  <img 
+                    src={product.image || '/skincare_jade.png'} 
+                    alt={product.name} 
+                    className="h-36 object-contain mix-blend-multiply drop-shadow-md group-hover:scale-105 transition duration-500" 
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = '/skincare_jade.png';
+                    }}
+                  />
                 </div>
                 
                 <div className="p-5 flex flex-col flex-1">
