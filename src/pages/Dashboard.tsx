@@ -85,7 +85,7 @@ export default function Dashboard() {
         {/* Overall Skin Health */}
         <div className="lg:col-span-2 bg-[#fdfbf5] rounded-3xl p-8 shadow-sm border border-[#e5dfd1] relative overflow-hidden flex flex-col justify-center min-h-[250px]">
           {/* Mock background image texture would go here */}
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('/dashboard-roller-flowers.png')] bg-cover bg-left opacity-90 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('/dashboard-skincare-flatlay.png')] bg-cover bg-left opacity-90 pointer-events-none"></div>
           
           <div className="relative z-10 w-2/3">
             <h2 className="text-xl font-bold text-[#001534] mb-4">Overall Skin Health</h2>

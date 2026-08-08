@@ -63,7 +63,7 @@ export default function Register() {
           
           <div className="w-full rounded-2xl overflow-hidden shadow-xl border border-white/20">
             <img 
-              src="/register-img.png" 
+              src="/skincare_jade.png" 
               alt="Skincare jade roller and serum" 
               className="w-full h-[420px] object-cover"
             />

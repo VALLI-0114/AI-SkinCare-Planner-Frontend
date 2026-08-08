@@ -9,7 +9,7 @@ export default function Landing() {
       <div 
         className="absolute inset-0 z-0 opacity-50 pointer-events-none" 
         style={{
-          backgroundImage: "url('/landing-bg.png')",
+          backgroundImage: "url('/bg_marble_circuit.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
