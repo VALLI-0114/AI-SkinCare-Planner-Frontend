@@ -27,6 +27,7 @@ export default function Login() {
       const data = res.data
       if (data.access_token) {
         localStorage.setItem('token', data.access_token)
+        localStorage.setItem('access_token', data.access_token)
         if (data.user) {
           localStorage.setItem('user', JSON.stringify(data.user))
           const role = data.user.role_name?.toLowerCase() || ''
