@@ -61,11 +61,11 @@ export default function DermatologistDashboard() {
   }, []);
 
   const FALLBACK_PATIENTS: PatientQueue[] = [
-    { id: 'bc132dbf-c7cd-493a-8b3c-77f4a067c139', user_id: 'bc132dbf-c7cd-493a-8b3c-77f4a067c139', patient_name: 'lalli', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Fine Lines' },
-    { id: 'c4bbf99b-ae29-4172-840a-bf84c3523464', user_id: 'c4bbf99b-ae29-4172-840a-bf84c3523464', patient_name: 'likhith', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Acne & Breakouts' },
-    { id: 'f39db07a-cbdf-478b-867c-01686edc0c74', user_id: 'f39db07a-cbdf-478b-867c-01686edc0c74', patient_name: 'sindhu', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness' },
-    { id: 'f1eb41d1-93d0-4b53-a7a6-c6154927c785', user_id: 'f1eb41d1-93d0-4b53-a7a6-c6154927c785', patient_name: 'vallika', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness' },
-    { id: 'fd16b4df-8604-49f2-a2e3-f7547c25730a', user_id: 'fd16b4df-8604-49f2-a2e3-f7547c25730a', patient_name: 'likanya', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness' }
+    { id: 'bc132dbf-c7cd-493a-8b3c-77f4a067c139', user_id: 'bc132dbf-c7cd-493a-8b3c-77f4a067c139', patient_name: 'lalli', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Fine Lines', created_at: '2026-08-08T00:00:00Z' },
+    { id: 'c4bbf99b-ae29-4172-840a-bf84c3523464', user_id: 'c4bbf99b-ae29-4172-840a-bf84c3523464', patient_name: 'likhith', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Acne & Breakouts', created_at: '2026-08-08T00:00:00Z' },
+    { id: 'f39db07a-cbdf-478b-867c-01686edc0c74', user_id: 'f39db07a-cbdf-478b-867c-01686edc0c74', patient_name: 'sindhu', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness', created_at: '2026-08-08T00:00:00Z' },
+    { id: 'f1eb41d1-93d0-4b53-a7a6-c6154927c785', user_id: 'f1eb41d1-93d0-4b53-a7a6-c6154927c785', patient_name: 'vallika', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness', created_at: '2026-08-08T00:00:00Z' },
+    { id: 'fd16b4df-8604-49f2-a2e3-f7547c25730a', user_id: 'fd16b4df-8604-49f2-a2e3-f7547c25730a', patient_name: 'likanya', status: 'SUBMITTED', risk_level: 'Standard Priority', primary_concern: 'Moderate Redness', created_at: '2026-08-08T00:00:00Z' }
   ];
 
   useEffect(() => {
